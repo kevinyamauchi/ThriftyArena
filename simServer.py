@@ -9,6 +9,18 @@ from thrift.transport import TSocket, TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
+from numpy import pi, ones, hstack
+
+# Import the pendulum simulator
+from secord import pendulumFactory
+
+############################################################################
+#
+#   Handler for the simulator communication
+#
+#
+############################################################################
+
 class simCommHandler:
     def __init__(self):
         self.log = {}
@@ -16,19 +28,32 @@ class simCommHandler:
     def ping(self):
         print 'ping()'
 
+    # This method starts the simulation and returns this intial conditions
     def initSim(self):
         print 'initSim()'
 
-        return [1,2,3,4]
+        # Create the pendulum simulator object
+        self._myPend = pendulumFactory()
 
+        return hstack((0, 3 * pi / 4, 1e-3 * ones(2) ))
+
+    # Method to step the simulation. Takes the forcing function, returns
+    # the new state
     def step(self, u):
         print 'step()'
 
-        return [u, 2, 3, 4]
+        return self._myPend(u)
 
     def endSim(self):
 
         return FALSE
+
+###########################################################################
+#
+#   Server set up script
+#
+#
+############################################################################
 
 handler = simCommHandler()
 processor = simComm.Processor(handler)
@@ -43,5 +68,3 @@ print 'Starting the server...'
 server.serve()
 
 print 'done'
-
-

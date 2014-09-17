@@ -26,7 +26,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print('Functions:')
   print('  void ping()')
   print('   initSim()')
-  print('   step(i32 force)')
+  print('   step(double force)')
   print('  bool endSim()')
   print('')
   sys.exit(0)

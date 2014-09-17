@@ -380,7 +380,7 @@ class initSim_result:
   """
 
   thrift_spec = (
-    (0, TType.LIST, 'success', (TType.I32,None), None, ), # 0
+    (0, TType.LIST, 'success', (TType.DOUBLE,None), None, ), # 0
   )
 
   def __init__(self, success=None,):
@@ -400,7 +400,7 @@ class initSim_result:
           self.success = []
           (_etype3, _size0) = iprot.readListBegin()
           for _i4 in xrange(_size0):
-            _elem5 = iprot.readI32();
+            _elem5 = iprot.readDouble();
             self.success.append(_elem5)
           iprot.readListEnd()
         else:
@@ -417,9 +417,9 @@ class initSim_result:
     oprot.writeStructBegin('initSim_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.LIST, 0)
-      oprot.writeListBegin(TType.I32, len(self.success))
+      oprot.writeListBegin(TType.DOUBLE, len(self.success))
       for iter6 in self.success:
-        oprot.writeI32(iter6)
+        oprot.writeDouble(iter6)
       oprot.writeListEnd()
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
@@ -453,7 +453,7 @@ class step_args:
 
   thrift_spec = (
     None, # 0
-    (1, TType.I32, 'force', None, None, ), # 1
+    (1, TType.DOUBLE, 'force', None, None, ), # 1
   )
 
   def __init__(self, force=None,):
@@ -469,8 +469,8 @@ class step_args:
       if ftype == TType.STOP:
         break
       if fid == 1:
-        if ftype == TType.I32:
-          self.force = iprot.readI32();
+        if ftype == TType.DOUBLE:
+          self.force = iprot.readDouble();
         else:
           iprot.skip(ftype)
       else:
@@ -484,8 +484,8 @@ class step_args:
       return
     oprot.writeStructBegin('step_args')
     if self.force is not None:
-      oprot.writeFieldBegin('force', TType.I32, 1)
-      oprot.writeI32(self.force)
+      oprot.writeFieldBegin('force', TType.DOUBLE, 1)
+      oprot.writeDouble(self.force)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
@@ -517,7 +517,7 @@ class step_result:
   """
 
   thrift_spec = (
-    (0, TType.LIST, 'success', (TType.I32,None), None, ), # 0
+    (0, TType.LIST, 'success', (TType.DOUBLE,None), None, ), # 0
   )
 
   def __init__(self, success=None,):
@@ -537,7 +537,7 @@ class step_result:
           self.success = []
           (_etype10, _size7) = iprot.readListBegin()
           for _i11 in xrange(_size7):
-            _elem12 = iprot.readI32();
+            _elem12 = iprot.readDouble();
             self.success.append(_elem12)
           iprot.readListEnd()
         else:
@@ -554,9 +554,9 @@ class step_result:
     oprot.writeStructBegin('step_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.LIST, 0)
-      oprot.writeListBegin(TType.I32, len(self.success))
+      oprot.writeListBegin(TType.DOUBLE, len(self.success))
       for iter13 in self.success:
-        oprot.writeI32(iter13)
+        oprot.writeDouble(iter13)
       oprot.writeListEnd()
       oprot.writeFieldEnd()
     oprot.writeFieldStop()

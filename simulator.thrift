@@ -40,10 +40,10 @@ service simComm {
   void ping();
 
   // Method to start the problem
-  list<i32> initSim();
+  list<double> initSim();
 
   // Method to perform the next iteration
-  list<i32> step(1: i32 force);
+  list<double> step(1: double  force);
 
   // Method to end the challene
   bool endSim();
